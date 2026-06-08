@@ -1,6 +1,6 @@
 # L/R Swaper v2.8
 
-Small Pop!_OS / Ubuntu GUI + CLI app to swap left/right channels for any stereo audio output.
+Small Pop!_OS / Ubuntu GUI + CLI app to swap left/right channels for any stereo audio output plus EQ.
 
 ## New in v2.8
 
