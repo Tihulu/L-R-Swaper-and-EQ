@@ -1,0 +1,143 @@
+name: Publish platform releases
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-platform-releases
+  cancel-in-progress: false
+
+env:
+  RELEASE_VERSION: v2.8
+  LINUX_TAG: linux-v2.8
+  MACOS_TAG: macos-v2.8
+
+jobs:
+  publish:
+    name: Publish Linux and macOS releases
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build release packages
+        run: |
+          set -euo pipefail
+          mkdir -p release-assets release-notes
+
+          tar -czf "release-assets/L-R-Swaper-Linux-${RELEASE_VERSION}.tar.gz" -C linux .
+          tar -czf "release-assets/L-R-Swaper-macOS-${RELEASE_VERSION}.tar.gz" -C macos .
+
+          cat > release-notes/linux.md <<'EOF'
+          # L/R Swaper Linux v2.8
+
+          Linux release for Pop!_OS, Ubuntu, Linux Mint, Debian, and other apt-based systems.
+
+          ## Quick install
+
+          ```bash
+          bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
+          ```
+
+          ## Includes
+
+          - GUI + CLI app
+          - L/R swap
+          - L/R audio tests
+          - bass/treble EQ sliders
+          - volume slider
+          - L/R balance slider
+          - three volume-independent preset slots
+          - clean disable/unload behavior
+
+          ## Required packages
+
+          The quick installer installs:
+
+          ```bash
+          python3 python3-tk pulseaudio-utils alsa-utils swh-plugins curl ca-certificates tar
+          ```
+          EOF
+
+          cat > release-notes/macos.md <<'EOF'
+          # L/R Swaper macOS v2.8
+
+          macOS Apple Silicon source/build package for L/R Swaper and EQ.
+
+          ## Audio routing
+
+          The macOS version uses BlackHole 2ch as a virtual audio device:
+
+          ```text
+          macOS audio -> BlackHole 2ch -> L/R Swaper Mac -> selected output
+          ```
+
+          ## Requirements
+
+          ```bash
+          brew install python@3.13 python-tk@3.13
+          brew install --cask blackhole-2ch
+          brew install switchaudio-osx
+          ```
+
+          ## Build DMG
+
+          ```bash
+          cd macos
+          chmod +x build_standalone_dmg.command
+          ./build_standalone_dmg.command
+          ```
+
+          Output:
+
+          ```text
+          L-R-Swaper-Mac-Standalone-Apple-Silicon.dmg
+          ```
+
+          ## Privacy
+
+          macOS treats BlackHole as an audio input device, so the app needs Microphone permission. Processing is local; the app does not record or upload audio.
+          EOF
+
+      - name: Publish or update Linux release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          ASSET="release-assets/L-R-Swaper-Linux-${RELEASE_VERSION}.tar.gz"
+          if gh release view "${LINUX_TAG}" >/dev/null 2>&1; then
+            gh release upload "${LINUX_TAG}" "$ASSET" --clobber
+            gh release edit "${LINUX_TAG}" \
+              --title "L/R Swaper Linux ${RELEASE_VERSION}" \
+              --notes-file release-notes/linux.md
+          else
+            gh release create "${LINUX_TAG}" "$ASSET" \
+              --target "$GITHUB_SHA" \
+              --title "L/R Swaper Linux ${RELEASE_VERSION}" \
+              --notes-file release-notes/linux.md
+          fi
+
+      - name: Publish or update macOS release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          ASSET="release-assets/L-R-Swaper-macOS-${RELEASE_VERSION}.tar.gz"
+          if gh release view "${MACOS_TAG}" >/dev/null 2>&1; then
+            gh release upload "${MACOS_TAG}" "$ASSET" --clobber
+            gh release edit "${MACOS_TAG}" \
+              --title "L/R Swaper macOS ${RELEASE_VERSION}" \
+              --notes-file release-notes/macos.md
+          else
+            gh release create "${MACOS_TAG}" "$ASSET" \
+              --target "$GITHUB_SHA" \
+              --title "L/R Swaper macOS ${RELEASE_VERSION}" \
+              --notes-file release-notes/macos.md
+          fi
