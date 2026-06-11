@@ -6,6 +6,7 @@ DMG_NAME="L-R-Swaper-Mac-Standalone-Apple-Silicon"
 VOL_NAME="L/R Swaper Mac"
 ROOT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PYTHON="/opt/homebrew/bin/python3.13"
+ENTRY="lr_swaper_mac_clean_ui.py"
 
 cd "$ROOT_DIR"
 
@@ -67,7 +68,7 @@ fi
 chmod +x bundle_bin/SwitchAudioSource
 
 echo
-echo "Building standalone .app..."
+echo "Building standalone .app with clean UI..."
 python -m PyInstaller \
   --windowed \
   --target-arch arm64 \
@@ -77,7 +78,7 @@ python -m PyInstaller \
   --add-binary "bundle_bin/SwitchAudioSource:." \
   --collect-all sounddevice \
   --collect-all numpy \
-  lr_swaper_mac.py
+  "${ENTRY}"
 
 echo
 echo "Patching app privacy description..."
