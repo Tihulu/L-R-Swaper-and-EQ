@@ -2,9 +2,30 @@
 
 Pop!_OS / Ubuntu GUI + CLI app to swap left/right channels for any stereo audio output, apply simple bass/treble EQ, adjust L/R balance, and manage presets.
 
+## Quick install from GitHub
+
+For Pop!_OS / Ubuntu / other apt-based Linux systems, run:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
+```
+
+The quick installer will:
+
+- install required apt packages
+- download the latest repository archive from GitHub
+- run the local Linux installer
+- verify that `lr-swaper` is installed
+
+Then open **L/R Swaper** from the app menu, or run:
+
+```bash
+lr-swaper
+```
+
 ## Requirements
 
-Install the recommended packages:
+Install the recommended packages manually only if you are not using the quick installer:
 
 ```bash
 sudo apt install python3-tk pulseaudio-utils alsa-utils swh-plugins
@@ -17,7 +38,7 @@ What they provide:
 - `alsa-utils`: useful audio utilities
 - `swh-plugins`: LADSPA `mbeq_1197` plugin for bass/treble EQ
 
-## Install
+## Manual install from a cloned repository
 
 From the repository root:
 
@@ -26,8 +47,6 @@ cd linux
 chmod +x install.sh
 ./install.sh
 ```
-
-Then open **L/R Swaper** from the app menu.
 
 The installer also keeps the old command name as an alias:
 
@@ -187,6 +206,14 @@ sudo apt install python3-tk
 
 ```bash
 sudo apt install swh-plugins
+```
+
+### `lr-swaper` command is not found after install
+
+The app is installed to `~/.local/bin`. Add it to your shell path and reopen the terminal:
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"
 ```
 
 ### Audio routed to the wrong output
