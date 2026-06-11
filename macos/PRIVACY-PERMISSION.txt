@@ -1,0 +1,20 @@
+L/R Swaper Mac privacy permission
+
+Why Microphone permission appears:
+macOS treats BlackHole 2ch as an audio input device. L/R Swaper Mac reads the BlackHole input so it can process your system audio locally.
+
+The app does not:
+- upload audio
+- save recordings
+- access camera/location/contacts/documents
+- run after you close it
+
+Enable permission:
+System Settings -> Privacy & Security -> Microphone -> L-R Swaper Mac
+
+If it is not listed:
+1. Open L-R Swaper Mac
+2. Press Start once
+3. Return to Microphone settings
+4. Enable it
+5. Stop/Start again
