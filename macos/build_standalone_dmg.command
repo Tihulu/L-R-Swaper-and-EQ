@@ -38,7 +38,7 @@ rm -rf .venv build dist dmg_staging bundle_bin "${DMG_NAME}.dmg" "${DMG_NAME}-tm
 source .venv/bin/activate
 
 python -m pip install --upgrade pip
-python -m pip install -r requirements-mac.txt pyinstaller
+python -m pip install -r dependencies.txt
 
 echo
 echo "Preparing app icon..."
