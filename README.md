@@ -22,14 +22,15 @@ L/R Swaper helps with stereo output routing and quick tone adjustment:
 - manage three volume-independent preset slots
 - restore/disable virtual audio chains cleanly
 
-## Linux quick start
+## Linux quick install from GitHub
+
+For Pop!_OS / Ubuntu / other apt-based Linux systems:
 
 ```bash
-cd linux
-sudo apt install python3-tk pulseaudio-utils alsa-utils swh-plugins
-chmod +x install.sh
-./install.sh
+bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
 ```
+
+The quick installer downloads the latest `main` branch, installs required packages, runs the Linux installer, and verifies that `lr-swaper` is available.
 
 Then open **L/R Swaper** from the app menu, or run:
 
@@ -37,7 +38,7 @@ Then open **L/R Swaper** from the app menu, or run:
 lr-swaper
 ```
 
-More details: [`linux/README.md`](linux/README.md)
+More details and manual install steps: [`linux/README.md`](linux/README.md)
 
 ## macOS quick start
 
@@ -54,6 +55,7 @@ Follow the macOS notes in [`macos/README.md`](macos/README.md). The macOS versio
 ├── README.md          # general project overview
 ├── linux/             # Pop!_OS / Ubuntu version
 │   ├── README.md
+│   ├── quick-install.sh
 │   ├── lr-swaper.py
 │   ├── install.sh
 │   ├── uninstall.sh
