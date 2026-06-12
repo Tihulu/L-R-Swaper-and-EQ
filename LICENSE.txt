@@ -1,0 +1,16 @@
+L/R Swaper and EQ
+
+Copyright (C) 2026 Tihulu
+
+License: GPL-3.0-or-later
+
+This project is licensed under the GNU General Public License version 3.0 or later.
+
+You may use, copy, study, modify, and redistribute this software under the GPL terms.
+
+If you distribute modified versions, you must keep the same GPL license and provide the corresponding source code.
+
+This software is provided without warranty.
+
+Full license text:
+https://www.gnu.org/licenses/gpl-3.0.txt
