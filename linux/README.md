@@ -1,16 +1,16 @@
-# L/R Swaper Linux v4.9
+# L/R Swaper Linux v4.8
 
-Modern Linux version of **L/R Swaper and EQ** for Pop!_OS, Ubuntu, Linux Mint, Debian, and other apt-based systems using PipeWire/PulseAudio compatibility.
+Modern Linux build of **L/R Swaper and EQ** for Pop!_OS / Ubuntu / apt-based Linux systems.
 
 Repository: <https://github.com/Tihulu/L-R-Swaper-and-EQ>
 
 ## Quick install from GitHub
 
+[![Quick Install](https://img.shields.io/badge/Linux-Quick%20Install-1fc8ff?style=for-the-badge&logo=linux&logoColor=white)](#quick-install-from-github)
+
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
 ```
-
-The quick installer downloads the latest `main` branch from GitHub, installs required system packages, runs the Linux installer, and verifies the command.
 
 After install, open **L/R Swaper** from the app menu or run:
 
@@ -18,59 +18,27 @@ After install, open **L/R Swaper** from the app menu or run:
 lr-swaper
 ```
 
-## What is included
+## Included in v4.8
 
-- **Tihuluwave Theme**: PySide6/Qt modern UI, default on first launch
-- **Plain Theme**: original v2.8-style Tkinter UI
-- L/R swap and alternate swap mode
-- stereo left/right test buttons
-- bass and treble EQ using LADSPA `mbeq_1197`
-- L/R balance
-- volume control
-- three volume-independent preset slots
-- clean disable/restore behavior
-- dock launcher and icon install for COSMIC/GNOME-like desktops
+- Tihuluwave Theme, the modern Qt UI shown in this release
+- Plain Theme, original v2.8-style interface
+- GitHub repository link inside Help for future updates
+- GitHub quick install command
+- L/R swap and alternate swap
+- Left / Right / Both audio test
+- Sound controls for volume, bass, treble, and L/R balance
+- Quick actions: set default, fix streams, diagnostics, disable
+- Visible scrollbar and protected sliders, so mouse wheel scrolls the page instead of changing slider values
+- COSMIC/GNOME-friendly launcher and icon setup
 
-## Requirements
-
-The quick installer handles these automatically on apt-based systems:
+## Manual install
 
 ```bash
-sudo apt install python3 python3-venv python3-tk pulseaudio-utils alsa-utils swh-plugins curl ca-certificates tar
-```
-
-What they provide:
-
-- `python3`, `python3-venv`: app runtime and private PySide6 environment
-- `python3-tk`: Plain Theme UI
-- `pulseaudio-utils`: `pactl` and `paplay`
-- `alsa-utils`: audio utilities
-- `swh-plugins`: LADSPA bass/treble EQ plugin
-- `curl`, `ca-certificates`, `tar`: GitHub quick install download/extract
-
-The installer creates a private app venv at:
-
-```text
-~/.local/share/lr-swaper/.venv
-```
-
-and installs PySide6 there, so the Qt UI does not depend on the system Python packages.
-
-## Manual install from cloned repository
-
-```bash
-git clone https://github.com/Tihulu/L-R-Swaper-and-EQ.git
-cd L-R-Swaper-and-EQ/linux
-chmod +x install.sh
+cd linux
+chmod +x install.sh check-install.sh
 ./install.sh
-lr-swaper
-```
-
-If `check-install.sh` exists in your checkout, run it after install:
-
-```bash
-chmod +x check-install.sh
 ./check-install.sh
+lr-swaper
 ```
 
 ## Installed paths
@@ -84,81 +52,28 @@ chmod +x check-install.sh
 ~/.local/share/pixmaps/lr-swaper.png
 ```
 
-## Dock note
+## Release
 
-If an old pinned dock icon opens an older version, remove the old pin, open **L/R Swaper** from the app menu or terminal, and pin the newly running app.
-
-The current desktop launcher ID is:
+Recommended release tag:
 
 ```text
-com.tihulu.lr-swaper.desktop
+linux-v4.8
 ```
 
-## CLI examples
-
-```bash
-lr-swaper --swap-default
-lr-swaper --swap-default-alt
-lr-swaper --fix-now
-lr-swaper --test-left
-lr-swaper --test-right
-lr-swaper --test-lr
-lr-swaper --bass-db 4 --treble-db 2
-lr-swaper --tone-off
-lr-swaper --balance 50
-lr-swaper --balance-center
-lr-swaper --volume 80
-lr-swaper --save-slot 1
-lr-swaper --load-slot 1
-lr-swaper --neutral
-lr-swaper --disable
-lr-swaper --status
-```
-
-## Presets
-
-Presets are stored in:
+Recommended release title:
 
 ```text
-~/.config/lr-swaper/saved_settings.json
-~/.config/lr-swaper/saved_settings_2.json
-~/.config/lr-swaper/saved_settings_3.json
+L/R Swaper Linux v4.8
 ```
-
-Presets save target output, swap mode, bass, treble, and L/R balance. Presets do **not** save volume.
 
 ## Troubleshooting
 
-### `pactl` is missing
+If an old pinned dock icon opens an old version, unpin it, open **L/R Swaper** from the app menu or terminal, then pin the new running app.
 
-```bash
-sudo apt install pulseaudio-utils
-```
-
-### Plain Theme cannot open
-
-```bash
-sudo apt install python3-tk
-```
-
-### Bass/Treble does not work
-
-```bash
-sudo apt install swh-plugins
-```
-
-### `lr-swaper` is not found
+If `lr-swaper` is not found after install:
 
 ```bash
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
-Add that line to your shell profile if needed.
-
-## Uninstall
-
-```bash
-cd L-R-Swaper-and-EQ/linux
-chmod +x uninstall.sh
-./uninstall.sh
-```
+If PySide6 install fails, rerun `install.sh`; it creates a private venv under `~/.local/share/lr-swaper/.venv`.
