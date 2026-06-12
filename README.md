@@ -32,3 +32,5 @@ lr-swaper
 - Plain Theme keeps the original v2.8-style interface.
 
 More details: [`linux/README.md`](linux/README.md)
+
+GPL-3.0-or-later
