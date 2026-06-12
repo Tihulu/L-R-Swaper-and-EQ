@@ -71,4 +71,8 @@ Recommended release title:
 L/R Swaper Linux v5.1
 ```
 
+## License
+
+GPL-3.0-or-later
+
 If an old pinned dock icon opens an old version, unpin it, open **L/R Swaper** from the app menu or terminal, then pin the new running app.
