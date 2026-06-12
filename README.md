@@ -33,4 +33,4 @@ lr-swaper
 
 More details: [`linux/README.md`](linux/README.md)
 
-GPL-3.0-or-later
+GPL-3.0-or-later — see [`LICENSE.txt`](LICENSE.txt)
