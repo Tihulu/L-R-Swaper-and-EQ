@@ -1,12 +1,10 @@
-# L/R Swaper Linux v4.8
+# L/R Swaper Linux v5.1
 
-Modern Linux build of **L/R Swaper and EQ** for Pop!_OS / Ubuntu / apt-based Linux systems.
+Modern Linux build of **L/R Swaper and EQ** for Pop!_OS, Ubuntu, Linux Mint, Debian, and other apt-based systems.
 
 Repository: <https://github.com/Tihulu/L-R-Swaper-and-EQ>
 
-## Quick install from GitHub
-
-[![Quick Install](https://img.shields.io/badge/Linux-Quick%20Install-1fc8ff?style=for-the-badge&logo=linux&logoColor=white)](#quick-install-from-github)
+## Quick install
 
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
@@ -18,23 +16,30 @@ After install, open **L/R Swaper** from the app menu or run:
 lr-swaper
 ```
 
-## Included in v4.8
+## What changed in v5.1
 
-- Tihuluwave Theme, the modern Qt UI shown in this release
-- Plain Theme, original v2.8-style interface
-- GitHub repository link inside Help for future updates
-- GitHub quick install command
-- L/R swap and alternate swap
-- Left / Right / Both audio test
-- Sound controls for volume, bass, treble, and L/R balance
-- Quick actions: set default, fix streams, diagnostics, disable
-- Visible scrollbar and protected sliders, so mouse wheel scrolls the page instead of changing slider values
-- COSMIC/GNOME-friendly launcher and icon setup
+- Fixed the L/R Balance value box so the right-side text fits cleanly.
+- Balance value now uses compact format like `L:94%  R:100%`.
+- Help dialog uses real line breaks instead of showing literal `\\n` text.
+- Help includes the GitHub repository link for future updates.
+- Version bumped to **v5.1**.
 
-## Manual install
+## Manual install from release archive
 
 ```bash
-cd linux
+tar -xzf lr-swaper-linux-v5.1.tar.gz
+cd lr-swaper-linux-v5.1
+chmod +x install.sh check-install.sh
+./install.sh
+./check-install.sh
+lr-swaper
+```
+
+## Manual install from repository
+
+```bash
+git clone https://github.com/Tihulu/L-R-Swaper-and-EQ.git
+cd L-R-Swaper-and-EQ/linux
 chmod +x install.sh check-install.sh
 ./install.sh
 ./check-install.sh
@@ -57,23 +62,13 @@ lr-swaper
 Recommended release tag:
 
 ```text
-linux-v4.8
+linux-v5.1
 ```
 
 Recommended release title:
 
 ```text
-L/R Swaper Linux v4.8
+L/R Swaper Linux v5.1
 ```
-
-## Troubleshooting
 
 If an old pinned dock icon opens an old version, unpin it, open **L/R Swaper** from the app menu or terminal, then pin the new running app.
-
-If `lr-swaper` is not found after install:
-
-```bash
-export PATH="$HOME/.local/bin:$PATH"
-```
-
-If PySide6 install fails, rerun `install.sh`; it creates a private venv under `~/.local/share/lr-swaper/.venv`.
