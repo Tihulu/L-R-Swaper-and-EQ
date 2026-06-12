@@ -1,62 +1,33 @@
-name: Linux Release v4.8
+name: Linux Package v5.1
 
 on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  release:
-    name: Build and publish Linux v4.8 release
+  package:
+    name: Build Linux v5.1 package
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build release archives
+      - name: Build archives
         shell: bash
         run: |
           set -euo pipefail
-          TAG="linux-v4.8"
-          PKG="lr-swaper-linux-v4.8"
+          PKG="lr-swaper-linux-v5.1"
           mkdir -p dist "$PKG"
-          rsync -a \
-            --exclude='__pycache__' \
-            --exclude='.venv' \
-            --exclude='dist' \
-            linux/ "$PKG"/
+          rsync -a --exclude='__pycache__' --exclude='.venv' --exclude='dist' linux/ "$PKG"/
           tar -czf "dist/${PKG}.tar.gz" "$PKG"
           zip -qr "dist/${PKG}.zip" "$PKG"
           ls -lh dist
 
-      - name: Prepare release notes
-        shell: bash
-        run: |
-          if [ -f "RELEASES/linux-v4.8.md" ]; then
-            cp "RELEASES/linux-v4.8.md" RELEASE_NOTES.md
-          else
-            cat > RELEASE_NOTES.md <<'EOF'
-          # L/R Swaper Linux v4.8
-
-          Stable Linux v4.8 Tihuluwave release.
-          EOF
-          fi
-
-      - name: Create or update GitHub Release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          TAG="linux-v4.8"
-          TITLE="L/R Swaper Linux v4.8"
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            gh release upload "$TAG" dist/* --clobber
-          else
-            gh release create "$TAG" dist/* \
-              --target "$GITHUB_SHA" \
-              --title "$TITLE" \
-              --notes-file RELEASE_NOTES.md
-          fi
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lr-swaper-linux-v5.1
+          path: dist/*
