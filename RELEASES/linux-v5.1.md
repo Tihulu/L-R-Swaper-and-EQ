@@ -46,6 +46,10 @@ chmod +x install.sh check-install.sh
 lr-swaper
 ```
 
+## License
+
+GPL-3.0-or-later
+
 ## Release info
 
 Tag: linux-v5.1
