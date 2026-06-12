@@ -6,6 +6,7 @@ BRANCH="${LR_SWAPER_BRANCH:-main}"
 ARCHIVE_URL="https://codeload.github.com/${REPO}/tar.gz/refs/heads/${BRANCH}"
 PACKAGES=(
   python3
+  python3-venv
   python3-tk
   pulseaudio-utils
   alsa-utils
@@ -25,7 +26,7 @@ fail() {
 }
 
 if ! command -v apt-get >/dev/null 2>&1; then
-  fail "This quick installer currently supports apt-based Linux systems such as Pop!_OS, Ubuntu, Linux Mint, and Debian."
+  fail "This quick installer currently supports apt-based Linux systems such as Pop!_OS, Ubuntu, Linux Mint, Debian, and related distributions."
 fi
 
 SUDO=""
@@ -47,7 +48,7 @@ log "Installing required system packages"
 $SUDO apt-get update
 $SUDO apt-get install -y "${PACKAGES[@]}"
 
-log "Downloading L/R Swaper from GitHub"
+log "Downloading L/R Swaper from GitHub (${REPO}@${BRANCH})"
 curl -fsSL "$ARCHIVE_URL" -o "$TMP_DIR/lr-swaper.tar.gz"
 tar -xzf "$TMP_DIR/lr-swaper.tar.gz" -C "$TMP_DIR"
 
@@ -55,20 +56,22 @@ SRC_DIR="$(find "$TMP_DIR" -mindepth 1 -maxdepth 1 -type d | head -n 1)"
 [ -n "$SRC_DIR" ] || fail "Could not unpack repository archive."
 [ -d "$SRC_DIR/linux" ] || fail "Repository archive does not contain the linux/ installer folder."
 
-log "Installing L/R Swaper"
+log "Installing L/R Swaper Linux"
 cd "$SRC_DIR/linux"
 chmod +x install.sh
 ./install.sh
 
+if [ -f check-install.sh ]; then
+  chmod +x check-install.sh
+  ./check-install.sh || true
+fi
+
 log "Verifying install"
-if command -v lr-swaper >/dev/null 2>&1; then
-  printf 'Installed successfully. Run: lr-swaper\n'
-elif [ -x "$HOME/.local/bin/lr-swaper" ]; then
+if [ -x "$HOME/.local/bin/lr-swaper" ]; then
   printf 'Installed successfully at: %s\n' "$HOME/.local/bin/lr-swaper"
-  printf 'If the command is not found, add this to your shell profile and reopen the terminal:\n'
-  printf '  export PATH="$HOME/.local/bin:$PATH"\n'
 else
   fail "Install script finished, but lr-swaper was not found in ~/.local/bin."
 fi
 
 printf '\nOpen L/R Swaper from the app menu, or run:\n  lr-swaper\n'
+printf '\nIf your shell cannot find it, run:\n  export PATH="$HOME/.local/bin:$PATH"\n'
