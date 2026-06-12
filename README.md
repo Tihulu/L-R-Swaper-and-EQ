@@ -6,8 +6,6 @@ Repository: <https://github.com/Tihulu/L-R-Swaper-and-EQ>
 
 ## Linux quick install
 
-[![Quick Install](https://img.shields.io/badge/Linux-Quick%20Install-1fc8ff?style=for-the-badge&logo=linux&logoColor=white)](#linux-quick-install)
-
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
 ```
@@ -22,14 +20,15 @@ lr-swaper
 
 | Platform | Folder | Status |
 | --- | --- | --- |
-| Pop!_OS / Ubuntu Linux | [`linux/`](linux/) | v4.8 Tihuluwave Qt UI + Plain v2.8-style theme |
+| Pop!_OS / Ubuntu Linux | [`linux/`](linux/) | v5.1 Tihuluwave Qt UI + Plain v2.8-style theme |
 | macOS Apple Silicon | [`macos/`](macos/) | macOS app and BlackHole-based routing notes |
 
-## Linux v4.8
+## Linux v5.1
 
-- Stable Tihuluwave Theme release.
-- Help includes the GitHub repository link for future updates.
-- Quick install script installs from GitHub.
+- Help dialog has real line breaks and repository link.
+- L/R Balance value box is fixed so the text fits.
+- Balance display uses compact text such as `L:94%  R:100%`.
+- Quick install now installs from the `linux-v5.1` GitHub Release asset.
 - Plain Theme keeps the original v2.8-style interface.
 
 More details: [`linux/README.md`](linux/README.md)
