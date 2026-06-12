@@ -1,0 +1,77 @@
+name: Publish Linux release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-linux-release
+  cancel-in-progress: false
+
+env:
+  RELEASE_VERSION: v2.8
+  RELEASE_TAG: linux-v2.8
+  RELEASE_TITLE: L/R Swaper Linux v2.8
+  ASSET_NAME: L-R-Swaper-Linux-v2.8.tar.gz
+
+jobs:
+  publish-linux:
+    name: Publish latest Linux package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Package Linux folder
+        run: |
+          set -euo pipefail
+          tar -czf "$ASSET_NAME" -C linux .
+
+      - name: Write release notes
+        run: |
+          cat > linux-release-notes.md <<'EOF'
+          # L/R Swaper Linux v2.8
+
+          Latest Linux release for Pop!_OS, Ubuntu, Linux Mint, Debian, and other apt-based systems.
+
+          ## Quick install
+
+          ```bash
+          bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
+          ```
+
+          ## Includes
+
+          - Linux app in `linux/`
+          - one-line GitHub installer
+          - L/R swap and alternate swap modes
+          - left/right test buttons
+          - bass/treble EQ
+          - volume and L/R balance controls
+          - three preset slots
+          - clean disable/unload behavior
+
+          ## Download
+
+          Download `L-R-Swaper-Linux-v2.8.tar.gz` from this release, or use the quick install command above.
+          EOF
+
+      - name: Delete old Linux release if it exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete "$RELEASE_TAG" --yes --cleanup-tag || true
+
+      - name: Create Linux release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$RELEASE_TAG" "$ASSET_NAME" \
+            --target "$GITHUB_SHA" \
+            --title "$RELEASE_TITLE" \
+            --notes-file linux-release-notes.md
