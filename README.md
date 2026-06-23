@@ -20,16 +20,17 @@ lr-swaper
 
 | Platform | Folder | Status |
 | --- | --- | --- |
-| Pop!_OS / Ubuntu Linux | [`linux/`](linux/) | v5.1 Tihuluwave Qt UI + Plain v2.8-style theme |
+| Pop!_OS / Ubuntu Linux | [`linux/`](linux/) | v5.1 stable Linux build |
 | macOS Apple Silicon | [`macos/`](macos/) | macOS app and BlackHole-based routing notes |
 
 ## Linux v5.1
 
+- Latest stable Linux build: **v5.1 balance-box fixed**.
 - Help dialog has real line breaks and repository link.
 - L/R Balance value box is fixed so the text fits.
 - Balance display uses compact text such as `L:94%  R:100%`.
-- Quick install now installs from the `linux-v5.1` GitHub Release asset.
-- Plain Theme keeps the original v2.8-style interface.
+- Quick install and manual install instructions are documented in English under [`linux/README.md`](linux/README.md).
+- Older Linux release notes can remain archived under [`RELEASES/`](RELEASES/).
 
 More details: [`linux/README.md`](linux/README.md)
 
