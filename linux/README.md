@@ -6,15 +6,19 @@ Repository: <https://github.com/Tihulu/L-R-Swaper-and-EQ>
 
 ## Quick install
 
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
-```
+Use the one-line installer shown in the root README. It installs the Linux build and then you can open **L/R Swaper** from the app menu or run `lr-swaper`.
 
-After install, open **L/R Swaper** from the app menu or run:
+## Manual install from the repository
 
-```bash
-lr-swaper
-```
+Clone the repository, open the `linux/` folder, make `install.sh`, `check-install.sh`, and `uninstall.sh` executable, then run `install.sh`. Run `check-install.sh` after installation if you want to verify the installed files.
+
+## Manual install from a release archive
+
+Download the Linux v5.1 archive, extract it, enter the extracted folder, then run `install.sh`. Run `check-install.sh` afterwards if you want to verify the installation.
+
+## Uninstall
+
+Run `linux/uninstall.sh` from a repository checkout or from the extracted release archive. The uninstaller removes the application files, launchers, desktop entry, and icons. It does not remove your user presets unless you manually delete `~/.config/lr-swaper`.
 
 ## What changed in v5.1
 
@@ -24,52 +28,23 @@ lr-swaper
 - Help includes the GitHub repository link for future updates.
 - Version bumped to **v5.1**.
 
-## Manual install from release archive
-
-```bash
-tar -xzf lr-swaper-linux-v5.1.tar.gz
-cd lr-swaper-linux-v5.1
-chmod +x install.sh check-install.sh
-./install.sh
-./check-install.sh
-lr-swaper
-```
-
-## Manual install from repository
-
-```bash
-git clone https://github.com/Tihulu/L-R-Swaper-and-EQ.git
-cd L-R-Swaper-and-EQ/linux
-chmod +x install.sh check-install.sh
-./install.sh
-./check-install.sh
-lr-swaper
-```
-
 ## Installed paths
 
-```text
-~/.local/share/lr-swaper/
-~/.local/share/lr-swaper/.venv/
-~/.local/bin/lr-swaper
-~/.local/share/applications/com.tihulu.lr-swaper.desktop
-~/.local/share/icons/hicolor/*/apps/lr-swaper.png
-~/.local/share/pixmaps/lr-swaper.png
-```
+- `~/.local/share/lr-swaper/`
+- `~/.local/share/lr-swaper/.venv/`
+- `~/.local/bin/lr-swaper`
+- `~/.local/bin/bt-lr-swapper`
+- `~/.local/share/applications/com.tihulu.lr-swaper.desktop`
+- `~/.local/share/icons/hicolor/*/apps/lr-swaper.png`
+- `~/.local/share/pixmaps/lr-swaper.png`
 
-## Release
+## Release and archive notes
 
-Recommended release tag:
+Recommended release tag: `linux-v5.1`
 
-```text
-linux-v5.1
-```
+Recommended release title: `L/R Swaper Linux v5.1`
 
-Recommended release title:
-
-```text
-L/R Swaper Linux v5.1
-```
+Older release notes can stay archived under [`../RELEASES/`](../RELEASES/).
 
 ## License
 
