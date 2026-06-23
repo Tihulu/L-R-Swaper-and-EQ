@@ -6,27 +6,46 @@ Repository: <https://github.com/Tihulu/L-R-Swaper-and-EQ>
 
 ## Quick install
 
-Use the one-line installer shown in the root README. It installs the Linux build and then you can open **L/R Swaper** from the app menu or run `lr-swaper`.
+    bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
+
+After install, open **L/R Swaper** from the app menu or run:
+
+    lr-swaper
 
 ## Manual install from the repository
 
-Clone the repository, open the `linux/` folder, make `install.sh`, `check-install.sh`, and `uninstall.sh` executable, then run `install.sh`. Run `check-install.sh` after installation if you want to verify the installed files.
+    git clone https://github.com/Tihulu/L-R-Swaper-and-EQ.git
+    cd L-R-Swaper-and-EQ/linux
+    chmod +x install.sh check-install.sh uninstall.sh
+    ./install.sh
+    ./check-install.sh
+    lr-swaper
 
 ## Manual install from a release archive
 
-Download the Linux v5.1 archive, extract it, enter the extracted folder, then run `install.sh`. Run `check-install.sh` afterwards if you want to verify the installation.
+    tar -xzf lr-swaper-linux-v5.1.tar.gz
+    cd lr-swaper-linux-v5.1
+    chmod +x install.sh check-install.sh uninstall.sh
+    ./install.sh
+    ./check-install.sh
+    lr-swaper
 
 ## Uninstall
 
-Run `linux/uninstall.sh` from a repository checkout or from the extracted release archive. The uninstaller removes the application files, launchers, desktop entry, and icons. It does not remove your user presets unless you manually delete `~/.config/lr-swaper`.
+    ./uninstall.sh
+
+The uninstaller removes the application files, launchers, desktop entry, and icons. It does not remove your user presets unless you manually delete:
+
+    rm -rf ~/.config/lr-swaper
 
 ## What changed in v5.1
 
-- Fixed the L/R Balance value box so the right-side text fits cleanly.
-- Balance value now uses compact format like `L:94%  R:100%`.
-- Help dialog uses real line breaks instead of showing literal `\\n` text.
-- Help includes the GitHub repository link for future updates.
-- Version bumped to **v5.1**.
+- Fixed the L/R Balance value box so text fits cleanly.
+- Balance value uses compact format like `L:94%  R:100%`.
+- Help dialog uses real line breaks.
+- Help includes the GitHub repository link.
+- Keeps Tihuluwave Qt UI and Plain Theme.
+- Keeps L/R swap, alternate swap, EQ, volume, balance, test buttons, presets, and clean disable/unload behavior.
 
 ## Installed paths
 
@@ -38,16 +57,12 @@ Run `linux/uninstall.sh` from a repository checkout or from the extracted releas
 - `~/.local/share/icons/hicolor/*/apps/lr-swaper.png`
 - `~/.local/share/pixmaps/lr-swaper.png`
 
-## Release and archive notes
+## Release
 
 Recommended release tag: `linux-v5.1`
 
-Recommended release title: `L/R Swaper Linux v5.1`
-
-Older release notes can stay archived under [`../RELEASES/`](../RELEASES/).
+Recommended release asset: `lr-swaper-linux-v5.1.tar.gz`
 
 ## License
 
 GPL-3.0-or-later
-
-If an old pinned dock icon opens an old version, unpin it, open **L/R Swaper** from the app menu or terminal, then pin the new running app.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Theme dispatcher for L/R Swaper Linux.
 
-Plain Theme launches the original v2.8 interface.
+Plain Theme launches the classic interface.
 Tihuluwave Theme launches the modern neon dashboard.
 """
 import json

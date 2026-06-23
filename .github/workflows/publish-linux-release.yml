@@ -1,8 +1,6 @@
 name: Publish Linux release
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -13,10 +11,10 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  RELEASE_VERSION: v2.8
-  RELEASE_TAG: linux-v2.8
-  RELEASE_TITLE: L/R Swaper Linux v2.8
-  ASSET_NAME: L-R-Swaper-Linux-v2.8.tar.gz
+  RELEASE_VERSION: v5.1
+  RELEASE_TAG: linux-v5.1
+  RELEASE_TITLE: L/R Swaper Linux v5.1
+  ASSET_NAME: lr-swaper-linux-v5.1.tar.gz
 
 jobs:
   publish-linux:
@@ -30,20 +28,20 @@ jobs:
       - name: Package Linux folder
         run: |
           set -euo pipefail
-          tar -czf "$ASSET_NAME" -C linux .
+          mkdir -p lr-swaper-linux-v5.1
+          cp -a linux/. lr-swaper-linux-v5.1/
+          tar -czf "$ASSET_NAME" lr-swaper-linux-v5.1
 
       - name: Write release notes
         run: |
           cat > linux-release-notes.md <<'EOF'
-          # L/R Swaper Linux v2.8
+          # L/R Swaper Linux v5.1
 
-          Latest Linux release for Pop!_OS, Ubuntu, Linux Mint, Debian, and other apt-based systems.
+          Stable Linux release for Pop!_OS, Ubuntu, Linux Mint, Debian, and other apt-based systems.
 
           ## Quick install
 
-          ```bash
-          bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
-          ```
+              bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
 
           ## Includes
 
@@ -55,23 +53,29 @@ jobs:
           - volume and L/R balance controls
           - three preset slots
           - clean disable/unload behavior
+          - v5.1 balance value box fix
 
           ## Download
 
-          Download `L-R-Swaper-Linux-v2.8.tar.gz` from this release, or use the quick install command above.
+          Download `lr-swaper-linux-v5.1.tar.gz` from this release, or use the quick install command above.
+
+          ## License
+
+          GPL-3.0-or-later
           EOF
 
-      - name: Delete old Linux release if it exists
+      - name: Delete old Linux v5.1 release if it exists
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release delete "$RELEASE_TAG" --yes --cleanup-tag || true
 
-      - name: Create Linux release
+      - name: Create Linux v5.1 release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "$RELEASE_TAG" "$ASSET_NAME" \
             --target "$GITHUB_SHA" \
             --title "$RELEASE_TITLE" \
-            --notes-file linux-release-notes.md
+            --notes-file linux-release-notes.md \
+            --latest

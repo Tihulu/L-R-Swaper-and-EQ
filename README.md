@@ -6,15 +6,11 @@ Repository: <https://github.com/Tihulu/L-R-Swaper-and-EQ>
 
 ## Linux quick install
 
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
-```
+    bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
 
 Then open **L/R Swaper** from the app menu or run:
 
-```bash
-lr-swaper
-```
+    lr-swaper
 
 ## Platforms
 
@@ -26,9 +22,9 @@ lr-swaper
 ## Linux v5.1
 
 - Latest stable Linux build: **v5.1 balance-box fixed**.
-- Help dialog has real line breaks and repository link.
 - L/R Balance value box is fixed so the text fits.
 - Balance display uses compact text such as `L:94%  R:100%`.
+- Tihuluwave Qt UI and Plain Theme are included.
 - Quick install and manual install instructions are documented in English under [`linux/README.md`](linux/README.md).
 - Older Linux release notes can remain archived under [`RELEASES/`](RELEASES/).
 

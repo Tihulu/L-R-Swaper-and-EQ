@@ -6,6 +6,7 @@ REPO="${LR_SWAPER_REPO:-Tihulu/L-R-Swaper-and-EQ}"
 TAG="${LR_SWAPER_TAG:-linux-v5.1}"
 ASSET="lr-swaper-linux-v5.1.tar.gz"
 ARCHIVE_URL="https://github.com/${REPO}/releases/download/${TAG}/${ASSET}"
+
 PACKAGES=(
   python3
   python3-venv
@@ -46,7 +47,7 @@ log "Downloading L/R Swaper Linux ${VERSION} release"
 curl -fsSL "$ARCHIVE_URL" -o "$TMP_DIR/${ASSET}"
 tar -xzf "$TMP_DIR/${ASSET}" -C "$TMP_DIR"
 
-SRC_DIR="$(find "$TMP_DIR" -mindepth 1 -maxdepth 1 -type d -name 'lr-swaper-linux-*' | head -n 1)"
+SRC_DIR="$(find "$TMP_DIR" -mindepth 1 -maxdepth 2 -type d -name 'lr-swaper-linux-v5.1' | head -n 1)"
 [ -n "$SRC_DIR" ] || fail "Could not unpack L/R Swaper release archive."
 
 log "Installing L/R Swaper Linux ${VERSION}"
