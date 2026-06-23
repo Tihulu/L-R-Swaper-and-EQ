@@ -95,7 +95,7 @@ update-desktop-database "$DESKTOP_DIR" >/dev/null 2>&1 || true
 command -v xdg-desktop-menu >/dev/null 2>&1 && xdg-desktop-menu forceupdate >/dev/null 2>&1 || true
 
 echo
-echo "Installed L/R Swaper v4.9 venv Qt no-fallback."
+echo "Installed L/R Swaper v5.1 venv Qt no-fallback."
 echo
 echo "IMPORTANT:"
 echo "  Remove/unpin the OLD dock icon."
