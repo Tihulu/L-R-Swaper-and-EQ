@@ -12,6 +12,10 @@ Then open **L/R Swaper** from the app menu or run:
 
     lr-swaper
 
+## Linux UI Preview
+
+![L/R Swaper Tihuluwave UI](linux/screenshots/tihuluwave-v5.1.svg)
+
 ## Platforms
 
 | Platform | Folder | Status |
