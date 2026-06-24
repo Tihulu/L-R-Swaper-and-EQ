@@ -6,7 +6,7 @@ Repository: <https://github.com/Tihulu/L-R-Swaper-and-EQ>
 
 ## Screenshot
 
-![L/R Swaper Tihuluwave UI](screenshots/tihuluwave-v5.1.svg)
+![L/R Swaper Tihuluwave UI](screenshots/tihuluwave-v5.1.png)
 
 ## Quick install
 

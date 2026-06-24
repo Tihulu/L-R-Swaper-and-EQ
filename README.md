@@ -13,7 +13,7 @@ Repository: <https://github.com/Tihulu/L-R-Swaper-and-EQ>
 
 ## Linux UI Preview
 
-![L/R Swaper Tihuluwave UI](linux/screenshots/tihuluwave-v5.1.svg)
+![L/R Swaper Tihuluwave UI](linux/screenshots/tihuluwave-v5.1.png)
 
 ## Linux quick install
 
