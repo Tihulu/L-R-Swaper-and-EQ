@@ -4,6 +4,10 @@ Modern Linux build of **L/R Swaper and EQ** for Pop!_OS, Ubuntu, Linux Mint, Deb
 
 Repository: <https://github.com/Tihulu/L-R-Swaper-and-EQ>
 
+## Screenshot
+
+![L/R Swaper Tihuluwave UI](screenshots/tihuluwave-v5.1.svg)
+
 ## Quick install
 
     bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
