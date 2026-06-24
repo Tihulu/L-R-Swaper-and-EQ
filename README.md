@@ -4,6 +4,17 @@ Cross-platform left/right channel swapper and simple EQ project.
 
 Repository: <https://github.com/Tihulu/L-R-Swaper-and-EQ>
 
+## Platforms
+
+| Platform | Folder | Status |
+| --- | --- | --- |
+| Pop!_OS / Ubuntu Linux | [`linux/`](linux/) | v5.1 stable Linux build |
+| macOS Apple Silicon | [`macos/`](macos/) | macOS app and BlackHole-based routing notes |
+
+## Linux UI Preview
+
+![L/R Swaper Tihuluwave UI](linux/screenshots/tihuluwave-v5.1.svg)
+
 ## Linux quick install
 
     bash <(curl -fsSL https://raw.githubusercontent.com/Tihulu/L-R-Swaper-and-EQ/main/linux/quick-install.sh)
@@ -11,17 +22,6 @@ Repository: <https://github.com/Tihulu/L-R-Swaper-and-EQ>
 Then open **L/R Swaper** from the app menu or run:
 
     lr-swaper
-
-## Linux UI Preview
-
-![L/R Swaper Tihuluwave UI](linux/screenshots/tihuluwave-v5.1.svg)
-
-## Platforms
-
-| Platform | Folder | Status |
-| --- | --- | --- |
-| Pop!_OS / Ubuntu Linux | [`linux/`](linux/) | v5.1 stable Linux build |
-| macOS Apple Silicon | [`macos/`](macos/) | macOS app and BlackHole-based routing notes |
 
 ## Linux v5.1
 
